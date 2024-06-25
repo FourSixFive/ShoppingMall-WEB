@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.dao.memberDAO">
+
+	<!-- 쿼리 실행 후 결과값 담아줄 resultMap -->
+	<resultMap type="memberVO" id="memberMap">
+		<result column="basic_addr" property="basicAddr"/>
+		<result column="detail_addr" property="detailAddr"/>
+	</resultMap>
+	
+	<sql id="selectUserWithoutDate">
+		select id, password, name, phone, age, sex, postcode, basic_addr, detail_addr, point
+		  from userinfo
+	</sql>
+
+	<!-- 쿼리문 -->
+	
+	<!-- userinfo 레코드 삽입 -->
+	<insert id="insertUserInfo">
+		insert into userinfo(id, password, name, phone, age, sex, postcode, basic_addr, detail_addr, point)
+		values (#{ id }, #{ password }, #{ name }, #{ phone }, #{ age }, #{ sex }, #{ postcode }, #{ basicAddr }, #{ detailAddr }, #{ point })
+	</insert>
+	
+	<!-- 로그인 회원정보 가져오기 -->
+	<select id="loginUserInfo" resultType="memberVO" parameterType="String">
+		<include refid="selectUserWithoutDate"></include>
+		where id = #{ id }
+	</select>
+	
+	
+	
+</mapper>

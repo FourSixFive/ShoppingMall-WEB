@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods.dao.goodsDAO">
+
+	<resultMap type="goodsVO" id="goodsMap">
+		<result column="item_code" property="itemCode"></result>
+		<result column="item_name" property="itemName"></result>
+		<result column="brand_code" property="brandCode"></result>
+		<result column="brand_name" property="brandName"></result>
+		<result column="item_type" property="itemType"></result>
+		<result column="item_price" property="itemPrice"></result>
+		<result column="item_quantity" property="itemQuantity"></result>
+		<result column="item_addr" property="itemAddr"></result>
+		<result column="item_detail" property="itemDetail"></result>
+		<result column="item_style" property="itemStyle"></result>
+		<result column="item_madefor" property="itemMadefor"></result>
+		<result column="item_cleaning" property="itemCleaning"></result>
+		<result column="billing_number" property="billingNumber"></result>
+		<result column="reg_date" property="regDate"></result>
+	</resultMap>
+
+	<!-- 장바구니 목록 가져오기 -->
+	<select id="basketInfo" resultType="kr.ac.kopo.vo.GoodsVO" parameterType="String">
+		select *
+		  from basketinfo
+		 where id = #{ id }
+	</select>
+	
+	
+	<!-- 장바구니 물건 추가하기 -->
+	<insert id="insertBasket" parameterType="kr.ac.kopo.vo.GoodsVO">
+		insert into basketinfo (id, item_code, item_name, item_price, item_quantity)
+		values( #{ brandName }, #{ itemCode }, #{ itemName }, #{ itemPrice }, 1 )
+	</insert>
+	
+	
+	<!-- 물건데이터 추가(임시) -->
+	<insert id="insertGoods" parameterType="kr.ac.kopo.vo.GoodsVO">
+		insert into goodsdetailinfo (item_code, item_name, item_type, item_addr, item_price)
+		values( #{ itemCode }, #{ itemName }, #{ itemType }, #{ itemAddr }, ${ itemPrice } )
+	</insert>
+	
+	
+	<!-- single product 정보 가져오기 -->
+	<select id="singleInfo" resultMap="goodsMap" parameterType="String">
+		SELECT *
+		  FROM (
+				SELECT item_quantity
+				  FROM GOODSINFO g 
+				 WHERE item_code = #{ itemCode }
+		  		), goodsdetailinfo
+		 WHERE item_code = #{ itemCode }
+	</select>
+	
+	
+	<!-- index 화면에 랜덤 수 뿌리기 -->
+	<select id="randomShow" resultMap="goodsMap">
+		SELECT *
+		  FROM (
+		  		SELECT ITEM_CODE ,ITEM_NAME ,ITEM_TYPE ,ITEM_ADDR ,ITEM_PRICE 
+		  		FROM GOODSDETAILINFO g ORDER BY dbms_random.value
+		  		)
+		 WHERE rownum <![CDATA[<=]]> 12
+	</select>
+	
+</mapper>
