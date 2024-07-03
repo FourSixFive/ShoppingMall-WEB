@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,16 +60,16 @@
 						class="row d-md-flex no-gutters slider-text align-items-center justify-content-end"
 						data-scrollax-parent="true">
 						<img class="one-third order-md-last img-fluid"
-							src="images/Main.jpg" alt="">
+							src="images/Main01.png" alt="">
 						<div class="one-forth d-flex align-items-center ftco-animate"
 							data-scrollax=" properties: { translateY: '70%' }">
 							<div class="text">
 								<span class="subheading">STONE AISLAND</span>
 								<div class="horizontal">
 									<h1 class="mb-4 mt-3">WELCOME</h1>
-									<p class="mb-4">대충 환영 문구</p>
+									<p class="mb-4">Nicely Experiences</p>
 
-									<!-- <p><a href="#" class="btn-custom">Discover Now</a></p> -->
+									<p><a href="/ShoppingMall-WEB/shop.do?itemPrice=99999999&itemType=outers" class="btn-custom">Discover Now</a></p>
 								</div>
 							</div>
 						</div>
@@ -83,44 +84,19 @@
 						class="row d-flex no-gutters slider-text align-items-center justify-content-end"
 						data-scrollax-parent="true">
 						<img class="one-third order-md-last img-fluid"
-							src="images/NewArrival01-removebg.png" alt="">
+							src="images/Main.png" alt="">
 						<div class="one-forth d-flex align-items-center ftco-animate"
 							data-scrollax=" properties: { translateY: '70%' }">
 							<div class="text">
 								<span class="subheading">#New Arrival</span>
 								<div class="horizontal">
-									<h1 class="mb-4 mt-3">신상소개글 01</h1>
-									<p class="mb-4">Detail 문구 02</p>
+									<h1 class="mb-4 mt-3">STONE</h1>
+									<h1 class="mb-4 mt-3">&emsp;AISLAND</h1>
+									<p class="mb-4">Get As You Want</p>
 
-									<p>
-										<a href="/ShoppingMall-WEB/shop.jsp" class="btn-custom">Discover Now</a>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="slider-item js-fullheight">
-				<div class="overlay"></div>
-				<div class="container-fluid p-0">
-					<div
-						class="row d-flex no-gutters slider-text align-items-center justify-content-end"
-						data-scrollax-parent="true">
-						<img class="one-third order-md-last img-fluid"
-							src="images/NewArrival02-removebg.png" alt="">
-						<div class="one-forth d-flex align-items-center ftco-animate"
-							data-scrollax=" properties: { translateY: '70%' }">
-							<div class="text">
-								<span class="subheading">#New Arrival</span>
-								<div class="horizontal">
-									<h1 class="mb-4 mt-3">신상소개글 01</h1>
-									<p class="mb-4">Detail 문구 02</p>
-
-									<p>
-										<a href="/ShoppingMall-WEB/shop.jsp" class="btn-custom">Discover Now</a>
-									</p>
+									<!-- <p>
+										<a href="/ShoppingMall-WEB/shop.do" class="btn-custom">Discover Now</a>
+									</p> -->
 								</div>
 							</div>
 						</div>
@@ -130,70 +106,24 @@
 		</div>
 	</section>
 
-	<!-- <section class="ftco-section ftco-no-pt ftco-no-pb">
-		<div class="container">
-			<div class="row no-gutters ftco-services">
-				<div
-					class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services p-4 py-md-5">
-						<div
-							class="icon d-flex justify-content-center align-items-center mb-4">
-							<span class="flaticon-bag"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading">홈페이지가 풍족해보이는 공간01</h3>
-							<p>인코딩 박살 나는거 너무 열받네01</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services p-4 py-md-5">
-						<div
-							class="icon d-flex justify-content-center align-items-center mb-4">
-							<span class="flaticon-customer-service"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading">홈페이지가 풍족해보이는 공간02</h3>
-							<p>인코딩 박살 나는거 너무 열받네02</p>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services p-4 py-md-5">
-						<div
-							class="icon d-flex justify-content-center align-items-center mb-4">
-							<span class="flaticon-payment-security"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading">홈페이지가 풍족해보이는 공간03</h3>
-							<p>인코딩 박살 나는거 너무 열받네03</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
-
 	<section class="ftco-section bg-light">
 		<div class="container">
 			<div class="row justify-content-center mb-3 pb-3">
 				<div class="col-md-12 heading-section text-center ftco-animate">
-					<h2 class="mb-4">인기상품을 만나보세요</h2>
-					<p>All Seasons</p>
+					<h2 class="mb-4">랜덤 추천 상품</h2>
+					<p>Random Product Recommendation</p>
 				</div>
 			</div>
 		</div>
 		<div class="container">
+			
 			<div class="row">
-				
 				<!-- 하나 출력 div start -->
 				<c:forEach items="${ requestScope.randomList }" var="random">
 					<div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex">
 						<div class="product d-flex flex-column">
 							<br><br>
-							<a href="#!" class="img-prod"><img class="img-fluid"
+							<a href="${pageContext.request.contextPath}/productSingle.do?itemCode=${ random.itemCode }" class="img-prod"><img class="img-fluid"
 								src="${ random.itemAddr }00.jpg" alt="Colorlib Template">
 								<div class="overlay"></div> </a>
 							<div class="text py-3 pb-4 px-3">
@@ -203,17 +133,66 @@
 									</div>
 								</div>
 								<h3>
-									<a href="#!">${ random.itemName }</a>
+									<a href="${pageContext.request.contextPath}/productSingle.do?itemCode=${ random.itemCode }">${ random.itemName }</a>
 								</h3>
 								<div class="pricing">
 									<p class="price">
-										<span>&#8361; ${ random.itemPrice }</span>
+										<span>&#8361; <fmt:formatNumber value="${random.itemPrice}" type="number" groupingUsed="true" /></span>
 									</p>
 								</div>
 								<p class="bottom-area d-flex px-3">
-									<a href="product-single.jsp?itemCode=${ random.itemCode }" class="add-to-cart text-center py-2 mr-1"><span><i class="ion-ios-add ml-1"></i> Details
-									</span></a> <a href="#" class="buy-now text-center py-2"><i class="ion-ios-add ml-1"></i> Cart<span><i
-											class="ion-ios-cart ml-1"></i></span></a>
+									<a href="${pageContext.request.contextPath}/productSingle.do?itemCode=${ random.itemCode }" class="add-to-cart text-center py-2 mr-1"><span><i class="ion-ios-add ml-1"></i> Details
+									</span></a> <!-- <a href="#" class="buy-now text-center py-2"><i class="ion-ios-add ml-1"></i> Cart<span><i
+											class="ion-ios-cart ml-1"></i></span></a> -->
+								</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<!-- 하나 출력 div end -->
+				
+			</div>
+		</div>
+		<hr>
+		<br>
+		<br>
+		<div class="container">
+			<div class="row justify-content-center mb-3 pb-3">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<h2 class="mb-4">최고 인기 상품</h2>
+					<p>Best Seller Product Recommendation</p>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			
+			<div class="row">
+				<!-- 하나 출력 div start -->
+				<c:forEach items="${ requestScope.bestList }" var="best">
+					<div class="col-sm-12 col-md-6 col-lg-3 ftco-animate d-flex">
+						<div class="product d-flex flex-column">
+							<br><br>
+							<a href="#!" class="img-prod"><img class="img-fluid"
+								src="${ best.itemAddr }00.jpg" alt="Colorlib Template">
+								<div class="overlay"></div> </a>
+							<div class="text py-3 pb-4 px-3">
+								<div class="d-flex">
+									<div class="cat">
+										<span>Lifestyle</span>
+									</div>
+								</div>
+								<h3>
+									<a href="#!">${ best.itemName }</a>
+								</h3>
+								<div class="pricing">
+									<p class="price">
+										<span>&#8361; ${ best.itemPrice }</span>
+									</p>
+								</div>
+								<p class="bottom-area d-flex px-3">
+									<a href="${pageContext.request.contextPath}/productSingle.do?itemCode=${ best.itemCode }" class="add-to-cart text-center py-2 mr-1"><span><i class="ion-ios-add ml-1"></i> Details
+									</span></a> <!-- <a href="#" class="buy-now text-center py-2"><i class="ion-ios-add ml-1"></i> Cart<span><i
+											class="ion-ios-cart ml-1"></i></span></a> -->
 								</p>
 							</div>
 						</div>
@@ -224,83 +203,6 @@
 			</div>
 		</div>
 	</section>
-
-	<!-- <section class="ftco-section ftco-choose ftco-no-pb ftco-no-pt">
-		<div class="container">
-			<div class="row no-gutters">
-				<div class="col-lg-4">
-					<div class="choose-wrap divider-one img p-5 d-flex align-items-end"
-						style="background-image: url(images/choose-1.jpg);">
-
-						<div class="text text-center text-white px-2">
-							<span class="subheading">Men's Shoes</span>
-							<h2>Men's Collection</h2>
-							<p>Separated they live in Bookmarksgrove right at the coast
-								of the Semantics, a large language ocean.</p>
-							<p>
-								<a href="#" class="btn btn-black px-3 py-2">Shop now</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-8">
-					<div
-						class="row no-gutters choose-wrap divider-two align-items-stretch">
-						<div class="col-md-12">
-							<div
-								class="choose-wrap full-wrap img align-self-stretch d-flex align-item-center justify-content-end"
-								style="background-image: url(images/choose-2.jpg);">
-								<div class="col-md-7 d-flex align-items-center">
-									<div class="text text-white px-5">
-										<span class="subheading">Women's Shoes</span>
-										<h2>Women's Collection</h2>
-										<p>Separated they live in Bookmarksgrove right at the
-											coast of the Semantics, a large language ocean.</p>
-										<p>
-											<a href="#" class="btn btn-black px-3 py-2">Shop now</a>
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-12">
-							<div class="row no-gutters">
-								<div class="col-md-6">
-									<div
-										class="choose-wrap wrap img align-self-stretch bg-light d-flex align-items-center">
-										<div class="text text-center px-5">
-											<span class="subheading">Summer Sale</span>
-											<h2>Extra 50% Off</h2>
-											<p>Separated they live in Bookmarksgrove right at the
-												coast of the Semantics, a large language ocean.</p>
-											<p>
-												<a href="#" class="btn btn-black px-3 py-2">Shop now</a>
-											</p>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div
-										class="choose-wrap wrap img align-self-stretch d-flex align-items-center"
-										style="background-image: url(images/choose-3.jpg);">
-										<div class="text text-center text-white px-5">
-											<span class="subheading">Shoes</span>
-											<h2>Best Sellers</h2>
-											<p>Separated they live in Bookmarksgrove right at the
-												coast of the Semantics, a large language ocean.</p>
-											<p>
-												<a href="#" class="btn btn-black px-3 py-2">Shop now</a>
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section> -->
 
 	<footer>
 		<jsp:include page="/include/footer.jsp"></jsp:include>

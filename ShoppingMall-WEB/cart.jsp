@@ -1,3 +1,10 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.ac.kopo.vo.GoodsVO"%>
+<%@page import="kr.ac.kopo.dao.GoodsDAObatis"%>
+<%@page import="kr.ac.kopo.vo.MemberVO"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -46,7 +53,7 @@
 					<p class="breadcrumbs">
 						<span class="mr-2"><span>Cart</span>
 					</p>
-					<h1 class="mb-0 bread">My Wishlist</h1>
+					<h1 class="mb-0 bread">Cart</h1>
 				</div>
 			</div>
 		</div>
@@ -65,63 +72,46 @@
 									<th>Product</th>
 									<th>Price</th>
 									<th>Quantity</th>
-									<th>Total</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span
-											class="ion-ios-close"></span></a></td>
 
-									<td class="image-prod"><div class="img"
-											style="background-image: url(images/product-3.jpg);"></div></td>
+								<!-- 장바구니 물건 1칸 정보 표 -->
+								<c:forEach items="${ sessionScope.goodsList }" var="list">
+									<tr class="text-center">
+										<td class="product-remove"><a href="removeCart.jsp?itemCode=${ list.itemCode }" onclick="return confirm('장바구니에서 상품을 제거하시겠습니까?');"><span
+												class="ion-ios-close"></span></a></td>
+	
+										<td class="image-prod">
+											<div>
+												<a href="productSingle.do?itemCode=${ list.itemCode }">
+													<img src="${ list.itemAddr }00.jpg" style="width:150px; height:150px;">
+												</a>
+											</div>
+										</td>
 
-									<td class="product-name">
-										<h3>Nike Free RN 2019 iD</h3>
-										<p>Far far away, behind the word mountains, far from the
-											countries</p>
-									</td>
-
-									<td class="price">$4.90</td>
-
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-
-									<td class="total">$4.90</td>
-								</tr>
-								<!-- END TR-->
-
-								<tr class="text-center">
-									<td class="product-remove"><a href="#"><span
-											class="ion-ios-close"></span></a></td>
-
-									<td class="image-prod"><div class="img"
-											style="background-image: url(images/product-4.jpg);"></div></td>
-
-									<td class="product-name">
-										<h3>Nike Free RN 2019 iD</h3>
-										<p>Far far away, behind the word mountains, far from the
-											countries</p>
-									</td>
-
-									<td class="price">$15.70</td>
-
-									<td class="quantity">
-										<div class="input-group mb-3">
-											<input type="text" name="quantity"
-												class="quantity form-control input-number" value="1" min="1"
-												max="100">
-										</div>
-									</td>
-
-									<td class="total">$15.70</td>
-								</tr>
-								<!-- END TR-->
+										<td class="product-name">
+											<h3>${ list.itemName }</h3>
+											<p>
+												${ list.itemName } 
+												<c:if test="${ list.itemType ne 'ETC' }">
+													<span>, Size : ${ list.itemSize }</span>
+												</c:if>
+											</p>
+										</td>
+										<td class="price">&#8361; <fmt:formatNumber value="${list.itemPrice}" type="number" groupingUsed="true" /></td>
+	
+										<td class="quantity">
+											<div class="input-group mb-3">
+												<input type="text" name="quantity"
+													class="quantity form-control input-number" value="${ list.itemQuantity }" readonly>
+											</div>
+										</td>
+									</tr>
+									<!-- END TR-->
+									<!-- 장바구니 물건 1칸 정보 표 -->
+								</c:forEach>
+								
 							</tbody>
 						</table>
 					</div>
@@ -131,23 +121,21 @@
 				<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
 					<div class="cart-total mb-3">
 						<h3>Cart Totals</h3>
+						<c:forEach items="${ sessionScope.goodsList }" var="pricetag">
 						<p class="d-flex">
-							<span>Subtotal</span> <span>$20.60</span>
+							<span style="width:65%;">${ pricetag.itemName }</span>&emsp; 
+							<span style="width:25%;">&#8361; <fmt:formatNumber value="${pricetag.itemPrice}" type="number" groupingUsed="true" /></span>
+							<span style="width:5%;">${ pricetag.itemQuantity }</span> 
 						</p>
-						<p class="d-flex">
-							<span>Delivery</span> <span>$0.00</span>
-						</p>
-						<p class="d-flex">
-							<span>Discount</span> <span>$3.00</span>
-						</p>
+						</c:forEach>
 						<hr>
 						<p class="d-flex total-price">
-							<span>Total</span> <span>$17.60</span>
+							<span>Total</span>
+							<span>&#8361; <fmt:formatNumber value="${ requestScope.priceSum }" type="number" groupingUsed="true" /></span>
 						</p>
 					</div>
 					<p class="text-center">
-						<a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed
-							to Checkout</a>
+						<a href="checkout.do" class="btn btn-primary py-3 px-4" style="font-size: 1.5em; width: 100%;">구매하기</a>
 					</p>
 				</div>
 			</div>
@@ -200,10 +188,7 @@
 		        // If is not undefined
 		            
 		            $('#quantity').val(quantity + 1);
-
-		          
 		            // Increment
-		        
 		    });
 
 		     $('.quantity-left-minus').click(function(e){

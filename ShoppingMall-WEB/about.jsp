@@ -44,64 +44,26 @@
 		</div>
 	</div>
 
-	<section class="ftco-section ftco-no-pt ftco-no-pb">
-		<div class="container">
-			<div class="row no-gutters ftco-services">
-				<div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
-					<div class="media block-6 services p-4 py-md-5">
-						<div class="icon d-flex justify-content-center align-items-center mb-4">
-							<span class="flaticon-bag"></span>
-						</div>
-						<div class="media-body">
-							<h3 class="heading">Free Shipping</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						</div>
-					</div>      
-				</div>
-			<div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
-				<div class="media block-6 services p-4 py-md-5">
-					<div class="icon d-flex justify-content-center align-items-center mb-4">
-						<span class="flaticon-customer-service"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="heading">Support Customer</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>    
-			</div>
-			<div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
-				<div class="media block-6 services p-4 py-md-5">
-					<div class="icon d-flex justify-content-center align-items-center mb-4">
-						<span class="flaticon-payment-security"></span>
-					</div>
-					<div class="media-body">
-						<h3 class="heading">Secure Payments</h3>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-					</div>
-				</div>      
-			</div>
-			</div>
-		</div>
-	</section>
+	
 
 	<section class="ftco-section ftco-no-pb ftco-no-pt bg-light">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/about.jpg);">
-					<a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
+				<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/about2.jpg);">
+					<a href="https://www.youtube.com/watch?v=SpFcqVVFMrI" class="icon popup-vimeo d-flex justify-content-center align-items-center">
 						<span class="icon-play"></span>
 					</a>
 				</div>
 			<div class="col-md-7 py-md-5 wrap-about pb-md-5 ftco-animate">
 				<div class="heading-section-bold mb-4 mt-md-5">
 					<div class="ml-md-0">
-						<h2 class="mb-4">Stablished Sinced 1975</h2>
+						<h2 class="mb-4">Stone AIsland Project</h2>
 					</div>
 				</div>
 				<div class="pb-md-5 pb-4">
-					<p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p>
-					<p>But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her.</p>
-					<p><a href="#" class="btn btn-primary">Shop now</a></p>
+					<p>프로젝트 기간 : 24.06.17 ~ 24.07.02</p>
+					<p>개인 만족도 : 78 / 100</p>
+					<p><a href="StoneAIsland.do" class="btn btn-primary">Shop now</a></p>
 				</div>
 			</div>
 			</div>
@@ -114,36 +76,36 @@
 				<div class="col-lg-5">
 					<div class="services-flow">
 						<div class="services-2 p-4 d-flex ftco-animate">
-							<div class="icon">
+							<!-- <div class="icon">
 								<span class="flaticon-bag"></span>
-							</div>
+							</div> -->
 							<div class="text">
 								<h3>쇼핑몰 웹사이트 구성</h3>
 								<p class="mb-0">쇼핑몰 웹사이트 구성</p>
 							</div>
 						</div>
 						<div class="services-2 p-4 d-flex ftco-animate">
-							<div class="icon">
+							<!-- <div class="icon">
 								<span class="flaticon-heart-box"></span>
-							</div>
+							</div> -->
 							<div class="text">
 								<h3>상품 및 장바구니 구현</h3>
 								<p class="mb-0">상품 및 장바구니 구현</p>
 							</div>
 						</div>
 						<div class="services-2 p-4 d-flex ftco-animate">
-							<div class="icon">
+							<!-- <div class="icon">
 								<span class="flaticon-payment-security"></span>
-							</div>
+							</div> -->
 							<div class="text">
 								<h3>결제 시스템 구축</h3>
 								<p class="mb-0">결제 시스템 구축</p>
 							</div>
 						</div>
 						<div class="services-2 p-4 d-flex ftco-animate">
-							<div class="icon">
+							<!-- <div class="icon">
 								<span class="flaticon-customer-service"></span>
-							</div>
+							</div> -->
 							<div class="text">
 								<h3>리뷰 페이지 관리</h3>
 								<p class="mb-0">리뷰 페이지 관리</p>
@@ -154,34 +116,34 @@
 				<div class="col-lg-7">
 					<div class="heading-section ftco-animate mb-5">
 						<h2 class="mb-4">Teams</h2>
-						<p>프로젝트를 함께 구성한 팀원들입니다.</p>
+						<p>프로젝트 기간동안 같이 준비한 팀원들 입니다.</p>
 					</div>
 					<div class="carousel-testimony owl-carousel">
 						<div class="item">
 							<div class="testimony-wrap">
-								<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+								<div class="user-img mb-4" style="background-image: url(images/about2.jpg)">
 									<span class="quote d-flex align-items-center justify-content-center">
 										<i class="icon-quote-left"></i>
 									</span>
 								</div>
 								<div class="text">
-									<p class="mb-4 pl-4 line">Stone AIsland</p>
+									<p class="mb-4 pl-4 line"><a href="https://foursixfive.github.io/" target="_blank">Github</a></p>
 									<p class="name">조항민</p>
-									<span class="position">Once In a Lifetime Chance</span>
+									<span class="position">Stone AIsland</span>
 								</div>
 							</div>
 						</div>
 						<div class="item">
 							<div class="testimony-wrap">
-								<div class="user-img mb-4" style="background-image: url(images/person_1.jpg)">
+								<div class="user-img mb-4" style="background-image: url(images/logobok.png)">
 									<span class="quote d-flex align-items-center justify-content-center">
 										<i class="icon-quote-left"></i>
 									</span>
 								</div>
 								<div class="text">
-									<p class="mb-4 pl-4 line">Adios</p>
-									<p class="name">오범준</p>
-									<span class="position">홈페이지 부제</span>
+									<p class="mb-4 pl-4 line"><a href="https://jeon87946.github.io/" target="_blank">Github</a></p>
+									<p class="name">전보경</p>
+									<span class="position">복샵</span>
 								</div>
 							</div>
 						</div><div class="item">
@@ -193,7 +155,7 @@
 								</div>
 								<div class="text">
 									<p class="mb-4 pl-4 line">홈페이지 주소</p>
-									<p class="name">전보경</p>
+									<p class="name">오범준</p>
 									<span class="position">홈페이지 부제</span>
 								</div>
 							</div>

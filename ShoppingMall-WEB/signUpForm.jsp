@@ -9,7 +9,10 @@
 		border: 1px solid red;
 	}
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
+	var idCheckCheck = 0;
 	
 	let isNull = function(obj, msg) {
 		if(obj.value == ''){
@@ -24,7 +27,19 @@
 		
 		let f = document.signUpForm
 		
+		if(idCheckCheck == 0){
+			alert('아이디 중복여부를 확인하세요.')
+			document.signUpForm.checkid.focus()
+			return false
+		}
+		
 		if(isNull(f.signID, '아이디를 입력하세요'))return false
+		
+		if((f.signID == "") || (f.signID == null)){
+			alert('아이디를 입력하세요')
+			f.signID.focus()
+			return false
+		}
 		
 		if(isNull(f.signPWD, '패스워드를 입력하세요'))return false
 		
@@ -68,40 +83,64 @@
 	}
 	
 	function sample6_execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
+	    new daum.Postcode({
+	        oncomplete: function(data) {
+	
+	        	var addr = '';
+	            var extraAddr = '';
+	
+	            if (data.userSelectedType === 'R') {
+	                addr = data.roadAddress;
+	            } else {
+	                addr = data.jibunAddress;
+	            }
+	
+	            if(data.userSelectedType === 'R'){
+	
+	            	if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                    extraAddr += data.bname;
+	                }
+	
+	            	if(data.buildingName !== '' && data.apartment === 'Y'){
+	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                }
+	
+	            	if(extraAddr !== ''){
+	                    extraAddr = ' (' + extraAddr + ')';
+	                }
+	            }
+	
+	            document.getElementById('sample6_postcode').value = data.zonecode;
+	            document.getElementById("sample6_address").value = addr;
+	            document.getElementById("sample6_detailAddress").focus();
+	        }
+	    }).open();
+	}
+		
+	function checkid1(){
+		
+		var signID = $('#signID').val()
 
-        	var addr = '';
-            var extraAddr = '';
-
-            if (data.userSelectedType === 'R') {
-                addr = data.roadAddress;
-            } else {
-                addr = data.jibunAddress;
-            }
-
-            if(data.userSelectedType === 'R'){
-
-            	if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                    extraAddr += data.bname;
-                }
-
-            	if(data.buildingName !== '' && data.apartment === 'Y'){
-                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                }
-
-            	if(extraAddr !== ''){
-                    extraAddr = ' (' + extraAddr + ')';
-                }
-            }
-
-            document.getElementById('sample6_postcode').value = data.zonecode;
-            document.getElementById("sample6_address").value = addr;
-            document.getElementById("sample6_detailAddress").focus();
-        }
-    }).open();
-}
-
+		$.ajax({
+			url : 'checkId.jsp',
+			type : 'POST',
+			data : {
+				id : signID
+			},
+			dataType : 'json',
+			success : function(response){
+				if(response.exists){
+					alert('이미 존재하는 ID 입니다. 새로운 ID를 입력하세요.')
+				}else{
+					alert('사용 가능한 ID 입니다.')
+					idCheckCheck = 1;
+				}
+			},
+			error : function(){
+				alert('ajax 오류');
+			}
+		})
+	}
 </script>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -155,8 +194,8 @@
 		<div class="container" style="width:600px;">
 			<form name="signUpForm" onsubmit="return checkForm()" action="signUp.jsp" class="bg-white p-5 contact-form" method="post">
 				<div class="form-group" style="display:flex;">
-					<input name="signID" type="text" class="form-control" placeholder="ID">&emsp;
-					<input name="check" type="button" onclick="checkForm()" value="&emsp;중복체크&emsp;">
+					<input name="signID" id="signID" type="text" class="form-control" placeholder="ID">&emsp;
+					<input name="checkid" id="checkid" type="button" onclick="checkid1()" value="&emsp;중복체크&emsp;">
 				</div>
 				<div class="form-group">
 					<input name="signPWD" type="password" class="form-control" placeholder="Password">

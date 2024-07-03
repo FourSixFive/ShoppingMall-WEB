@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Stone AIsland - Contact</title>
-<script defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&callback=initMap"></script>
+<!-- <script defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&callback=initMap"></script> -->
 <script>
 	window.initMap = function() {
 		const map = new google.maps.Map(document.getElementById("GoogleMap"), {
@@ -65,6 +66,47 @@
 		</div>
 	</div>
 
+	<section class="ftco-section ftco-no-pt ftco-no-pb">
+		<div class="container">
+			<div class="row no-gutters ftco-services">
+				<div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+					<div class="media block-6 services p-4 py-md-5">
+						<div class="icon d-flex justify-content-center align-items-center mb-4">
+							<span class="flaticon-bag"></span>
+						</div>
+						<div class="media-body">
+							<h3 class="heading">고객 지원 센터에 오신 것을 환영합니다!</h3>
+							<p>고객님의 편리한 쇼핑을 위해 최선을 다하겠습니다. 궁금한 사항이나 도움이 필요하시면 언제든지 문의해 주세요.</p>
+						</div>
+					</div>      
+				</div>
+			<div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services p-4 py-md-5">
+					<div class="icon d-flex justify-content-center align-items-center mb-4">
+						<span class="flaticon-customer-service"></span>
+					</div>
+					<div class="media-body">
+						<h3 class="heading">문의 사항이 있으신가요?</h3>
+						<p>고객님의 모든 질문과 문제를 신속하게 해결해 드리겠습니다. 저희 고객 지원 팀이 도와드리겠습니다.</p>
+					</div>
+				</div>    
+			</div>
+			<div class="col-lg-4 text-center d-flex align-self-stretch ftco-animate">
+				<div class="media block-6 services p-4 py-md-5">
+					<div class="icon d-flex justify-content-center align-items-center mb-4">
+						<span class="flaticon-payment-security"></span>
+					</div>
+					<div class="media-body">
+						<h3 class="heading">보안 강화된 결제 시스템</h3>
+						<p>고객님의 개인정보 보호를 최우선으로 생각합니다. 안전하고 신뢰할 수 있는 쇼핑 경험을 제공하겠습니다.</p>
+					</div>
+				</div>      
+			</div>
+			</div>
+		</div>
+	</section>
+
+
 	<section class="ftco-section contact-section bg-light">
 		<div class="container">
 			<div class="row d-flex mb-5 contact-info">
@@ -109,27 +151,39 @@
 					</div>
 				</div>
 			</div>
+			
+			
 			<div class="row block-9">
 
 				<div class="col-md-6 order-md-last d-flex">
-					<form action="#" class="bg-white p-5 contact-form">
+					<form action="addRequest.do" class="bg-white p-5 contact-form" method="post">
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Your Name">
+							<input name="userId" type="text" class="form-control" value="${ sessionScope.userInfo.id }" placeholder="로그인 후 이용가능 합니다" readonly>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Your Email">
+							<input name="userName" type="text" class="form-control" placeholder="이름 입력 : ">
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Subject">
+							<input name="requestTitle" type="text" class="form-control" placeholder="문의 제목 : ">
 						</div>
 						<div class="form-group">
-							<textarea name="" id="" cols="30" rows="7" class="form-control"
-								placeholder="Message"></textarea>
+							<textarea name="content" id="content" cols="30" rows="7" class="form-control"
+								placeholder="문의 내용을 입력하세요 : "></textarea>
 						</div>
-						<div class="form-group">
-							<input type="submit" value="Send Message"
-								class="btn btn-primary py-3 px-5">
-						</div>
+						<c:choose>
+							<c:when test="${ empty sessionScope.userInfo }">
+								<div class="form-group">
+									<input type="submit" value="로그인 후 이용가능 합니다"
+										class="btn btn-primary py-3 px-5">
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="form-group">
+									<input type="submit" value="Send Message"
+										class="btn btn-primary py-3 px-5">
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</form>
 				</div>
 

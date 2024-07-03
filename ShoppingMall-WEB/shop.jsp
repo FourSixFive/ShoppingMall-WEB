@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +33,20 @@
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+	    $('#pagination li a').click(function(event) {
+	        event.preventDefault();
+	        
+	        // Remove 'active' class from all <li> elements
+	        $('#pagination li').removeClass('active');
+	        
+	        // Add 'active' class to the clicked <li> element
+	        $(this).parent().addClass('active');
+	    });
+	});
+</script> -->
 </head>
 <body class="goto-here">
 
@@ -58,18 +75,19 @@
 				<div class="col-md-8 col-lg-10 order-md-last">
 					<div class="row">
 					
+					<c:forEach items="${ requestScope.shopList }" var="allList">
 					<!-- 상품 블록 1개 start -->
 						<div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
 							<div class="product d-flex flex-column">
-								<a href="#" class="img-prod"><img class="img-fluid"
-									src="images/product-1.png" alt="Colorlib Template">
+								<a href="/ShoppingMall-WEB/productSingle.do?itemCode=${ allList.itemCode }" class="img-prod"><img class="img-fluid"
+									src="${ allList.itemAddr }00.jpg" alt="Colorlib Template">
 									<div class="overlay"></div> </a>
 								<div class="text py-3 pb-4 px-3">
 									<div class="d-flex">
 										<div class="cat">
 											<span>Lifestyle</span>
 										</div>
-										<div class="rating">
+										<!-- <div class="rating">
 											<p class="text-right mb-0">
 												<a href="#"><span class="ion-ios-star-outline"></span></a> <a
 													href="#"><span class="ion-ios-star-outline"></span></a> <a
@@ -77,301 +95,106 @@
 													href="#"><span class="ion-ios-star-outline"></span></a> <a
 													href="#"><span class="ion-ios-star-outline"></span></a>
 											</p>
-										</div>
+										</div> -->
 									</div>
 									<h3>
-										<a href="#">Nike Free RN 2019 iD</a>
+										<a href="#">&#8361; ${ allList.itemName }</a>
 									</h3>
 									<div class="pricing">
 										<p class="price">
-											<span>$120.00</span>
+											<span><fmt:formatNumber value="${ allList.itemPrice }" type="number" groupingUsed="true" /></span>
 										</p>
 									</div>
 									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add
-												to cart <i class="ion-ios-add ml-1"></i>
-										</span></a> <a href="#" class="buy-now text-center py-2">Buy now<span><i
-												class="ion-ios-cart ml-1"></i></span></a>
+										<a href="/ShoppingMall-WEB/productSingle.do?itemCode=${ allList.itemCode }" class="add-to-cart text-center py-2 mr-1"><span>Details<i class="ion-ios-add ml-1"></i>
+										</span></a> <!-- <a href="#" class="buy-now text-center py-2">Buy now<span><i
+												class="ion-ios-cart ml-1"></i></span></a> -->
 									</p>
 								</div>
 							</div>
 						</div>
-						<!-- 상품 블록 1개 end -->
+					<!-- 상품 블록 1개 end -->
+					</c:forEach>
 						
-						<div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-							<div class="product d-flex flex-column">
-								<a href="#" class="img-prod"><img class="img-fluid"
-									src="images/product-2.png" alt="Colorlib Template"> 
-									<div class="overlay"></div> </a>
-								<div class="text py-3 pb-4 px-3">
-									<div class="d-flex">
-										<div class="cat">
-											<span>Lifestyle</span>
-										</div>
-										<div class="rating">
-											<p class="text-right mb-0">
-												<a href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<h3>
-										<a href="#">Nike Free RN 2019 iD</a>
-									</h3>
-									<div class="pricing">
-										<p class="price">
-											<span class="mr-2 price-dc">$120.00</span><span
-												class="price-sale">$80.00</span>
-										</p>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add
-												to cart <i class="ion-ios-add ml-1"></i>
-										</span></a> <a href="#" class="buy-now text-center py-2">Buy now<span><i
-												class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-							<div class="product">
-								<a href="#" class="img-prod"><img class="img-fluid"
-									src="images/product-3.png" alt="Colorlib Template">
-									<div class="overlay"></div> </a>
-								<div class="text py-3 pb-4 px-3">
-									<div class="d-flex">
-										<div class="cat">
-											<span>Lifestyle</span>
-										</div>
-										<div class="rating">
-											<p class="text-right mb-0">
-												<a href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<h3>
-										<a href="#">Nike Free RN 2019 iD</a>
-									</h3>
-									<div class="pricing">
-										<p class="price">
-											<span>$120.00</span>
-										</p>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add
-												to cart <i class="ion-ios-add ml-1"></i>
-										</span></a> <a href="#" class="buy-now text-center py-2">Buy now<span><i
-												class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-							<div class="product">
-								<a href="#" class="img-prod"><img class="img-fluid"
-									src="images/product-4.png" alt="Colorlib Template">
-									<div class="overlay"></div> </a>
-								<div class="text py-3 pb-4 px-3">
-									<div class="d-flex">
-										<div class="cat">
-											<span>Lifestyle</span>
-										</div>
-										<div class="rating">
-											<p class="text-right mb-0">
-												<a href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<h3>
-										<a href="#">Nike Free RN 2019 iD</a>
-									</h3>
-									<div class="pricing">
-										<p class="price">
-											<span>$120.00</span>
-										</p>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add
-												to cart <i class="ion-ios-add ml-1"></i>
-										</span></a> <a href="#" class="buy-now text-center py-2">Buy now<span><i
-												class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
+					
+					
+
+	<!-- <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
+ 				<div class="product">
+ 					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-7.png" alt="Colorlib Template">
+  					<div class="overlay"></div>
+  				</a>
+ 					<div class="text py-3 pb-4 px-3">
+ 						<div class="d-flex">
+ 							<div class="cat">
+   						<span>Lifestyle</span>
+   					</div>
+   					<div class="rating">
+  							<p class="text-right mb-0">
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  							</p>
+  						</div>
+  					</div>
+ 						<h3><a href="#">Nike Free RN 2019 iD</a></h3>
+						<div class="pricing">
+  						<p class="price"><span>$120.00</span></p>
+  					</div>
+  					<p class="bottom-area d-flex px-3">
+ 							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+ 							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+ 						</p>
+ 					</div>
+ 				</div>
+ 			</div> -->
 
 
-						<div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-							<div class="product d-flex flex-column">
-								<a href="#" class="img-prod"><img class="img-fluid"
-									src="images/product-5.png" alt="Colorlib Template">
-									<div class="overlay"></div> </a>
-								<div class="text py-3 pb-4 px-3">
-									<div class="d-flex">
-										<div class="cat">
-											<span>Lifestyle</span>
-										</div>
-										<div class="rating">
-											<p class="text-right mb-0">
-												<a href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<h3>
-										<a href="#">Nike Free RN 2019 iD</a>
-									</h3>
-									<div class="pricing">
-										<p class="price">
-											<span>$120.00</span>
-										</p>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add
-												to cart <i class="ion-ios-add ml-1"></i>
-										</span></a> <a href="#" class="buy-now text-center py-2">Buy now<span><i
-												class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-						
-						
-						<div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-							<div class="product d-flex flex-column">
-								<a href="#" class="img-prod"><img class="img-fluid"
-									src="images/product-6.png" alt="Colorlib Template"> <span
-									class="status">50% Off</span>
-									<div class="overlay"></div> </a>
-								<div class="text py-3 pb-4 px-3">
-									<div class="d-flex">
-										<div class="cat">
-											<span>Lifestyle</span>
-										</div>
-										<div class="rating">
-											<p class="text-right mb-0">
-												<a href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a> <a
-													href="#"><span class="ion-ios-star-outline"></span></a>
-											</p>
-										</div>
-									</div>
-									<h3>
-										<a href="#">Nike Free RN 2019 iD</a>
-									</h3>
-									<div class="pricing">
-										<p class="price">
-											<span class="mr-2 price-dc">$120.00</span><span
-												class="price-sale">$80.00</span>
-										</p>
-									</div>
-									<p class="bottom-area d-flex px-3">
-										<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add
-												to cart <i class="ion-ios-add ml-1"></i>
-										</span></a> <a href="#" class="buy-now text-center py-2">Buy now<span><i
-												class="ion-ios-cart ml-1"></i></span></a>
-									</p>
-								</div>
-							</div>
-						</div>
-
-
-						<!-- <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-7.png" alt="Colorlib Template">
-			    					<div class="overlay"></div>
-			    				</a>
-		    					<div class="text py-3 pb-4 px-3">
-		    						<div class="d-flex">
-		    							<div class="cat">
-				    						<span>Lifestyle</span>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right mb-0">
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    							</p>
-			    						</div>
-			    					</div>
-		    						<h3><a href="#">Nike Free RN 2019 iD</a></h3>
-		  							<div class="pricing">
-			    						<p class="price"><span>$120.00</span></p>
-			    					</div>
-			    					<p class="bottom-area d-flex px-3">
-		    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-		    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div> -->
-
-
-						<!-- <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
-		    				<div class="product">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.png" alt="Colorlib Template">
-		    						<div class="overlay"></div>
-		    					</a>
-		    					<div class="text py-3 pb-4 px-3">
-		    						<div class="d-flex">
-		    							<div class="cat">
-				    						<span>Lifestyle</span>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right mb-0">
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    							</p>
-			    						</div>
-			    					</div>
-		    						<h3><a href="#">Nike Free RN 2019 iD</a></h3>
-		  							<div class="pricing">
-			    						<p class="price"><span>$120.00</span></p>
-			    					</div>
-			    					<p class="bottom-area d-flex px-3">
-		    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-		    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div> -->
+	<!-- <div class="col-sm-12 col-md-12 col-lg-4 ftco-animate d-flex">
+ 				<div class="product">
+ 					<a href="#" class="img-prod"><img class="img-fluid" src="images/product-8.png" alt="Colorlib Template">
+ 						<div class="overlay"></div>
+ 					</a>
+ 					<div class="text py-3 pb-4 px-3">
+ 						<div class="d-flex">
+ 							<div class="cat">
+   						<span>Lifestyle</span>
+   					</div>
+   					<div class="rating">
+  							<p class="text-right mb-0">
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  								<a href="#"><span class="ion-ios-star-outline"></span></a>
+  							</p>
+  						</div>
+  					</div>
+ 						<h3><a href="#">Nike Free RN 2019 iD</a></h3>
+						<div class="pricing">
+  						<p class="price"><span>$120.00</span></p>
+  					</div>
+  					<p class="bottom-area d-flex px-3">
+ 							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
+ 							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
+ 						</p>
+ 					</div>
+ 				</div>
+ 			</div> -->
 					</div>
 					<div class="row mt-5">
 						<div class="col text-center">
 							<div class="block-27">
-								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
+								<ul id="pagination">
+									<li><a href="#!">&lt;</a></li>
+									<li><a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=${ param.itemType }&Page=1">1</a></li>
+									<li><a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=${ param.itemType }&Page=2">2</a></li>
+									<li><a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=${ param.itemType }&Page=3">3</a></li>
+									<li><a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=${ param.itemType }&Page=4">4</a></li>
+									<li><a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=${ param.itemType }&Page=5">5</a></li>
+									<li><a href="#!">&gt;</a></li>
 								</ul>
 							</div>
 						</div>
@@ -388,18 +211,18 @@
 								<div class="panel-group" id="accordion" role="tablist"
 									aria-multiselectable="true">
 									
-									
 									<div class="panel panel-default">
 										<div class="panel-heading" role="tab" id="headingOne">
 											<h4 class="panel-title">
-												<a data-toggle="collapse" data-parent="#accordion"
-													href="#collapseOne" aria-expanded="true"
-													aria-controls="collapseOne">
-													Shirt
-												</a>
+											<a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=outers">Outers</a>
+												<!-- <a class="collapsed"  data-toggle="collapse"
+													data-parent="#accordion" href="/ShoppingMall-WEB/shop.do?itemType=outers&itemPrice=99999999"
+													aria-expanded="false" aria-controls="collapseOne">
+													Outers
+												</a> -->
 											</h4>
 										</div>
-										<div id="collapseOne" class="panel-collapse collapse"
+										<!-- <div id="collapseOne" class="panel-collapse collapse"
 											role="tabpanel" aria-labelledby="headingOne">
 											<div class="panel-body">
 												<ul>
@@ -412,21 +235,21 @@
 													<li><a href="#">Lifestyle</a></li>
 												</ul>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									
 									
 									<div class="panel panel-default">
 										<div class="panel-heading" role="tab" id="headingTwo">
 											<h4 class="panel-title">
-												<a class="collapsed" data-toggle="collapse"
-													data-parent="#accordion" href="#collapseTwo"
+											<a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=shirt">Shirt</a>
+												<!-- <a class="collapsed" data-toggle="collapse"
+													data-parent="#accordion" href="/ShoppingMall-WEB/shop.do?itemType=shirt&itemPrice=99999999"
 													aria-expanded="false" aria-controls="collapseTwo">
-													Trousers
-												</a>
+												</a> -->
 											</h4>
 										</div>
-										<div id="collapseTwo" class="panel-collapse collapse"
+										<!-- <div id="collapseTwo" class="panel-collapse collapse"
 											role="tabpanel" aria-labelledby="headingTwo">
 											<div class="panel-body">
 												<ul>
@@ -439,21 +262,22 @@
 													<li><a href="#">Lifestyle</a></li>
 												</ul>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									
 									
 									<div class="panel panel-default">
 										<div class="panel-heading" role="tab" id="headingThree">
 											<h4 class="panel-title">
-												<a class="collapsed" data-toggle="collapse"
-													data-parent="#accordion" href="#collapseThree"
+											<a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=trousers">Trousers</a>
+												<!-- <a class="collapsed" data-toggle="collapse"
+													data-parent="#accordion" href="/ShoppingMall-WEB/shop.do?itemType=trousers&itemPrice=99999999"
 													aria-expanded="false" aria-controls="collapseThree">
-													Outers
-												</a>
+													Trousers
+												</a> -->
 											</h4>
 										</div>
-										<div id="collapseThree" class="panel-collapse collapse"
+										<!-- <div id="collapseThree" class="panel-collapse collapse"
 											role="tabpanel" aria-labelledby="headingThree">
 											<div class="panel-body">
 												<ul>
@@ -463,21 +287,22 @@
 													<li><a href="#">Shoes</a></li>
 												</ul>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									
 									
 									<div class="panel panel-default">
 										<div class="panel-heading" role="tab" id="headingFour">
 											<h4 class="panel-title">
-												<a class="collapsed" data-toggle="collapse"
-													data-parent="#accordion" href="#collapseFour"
+											<a href="/ShoppingMall-WEB/shop.do?itemPrice=${ param.itemPrice }&itemType=ETC">ETC</a>	
+												<!-- <a class="collapsed" data-toggle="collapse"
+													data-parent="#accordion" href="/ShoppingMall-WEB/shop.do?itemType=ETC&itemPrice=99999999"
 													aria-expanded="false" aria-controls="collapseThree">
 													ETC
-												</a>
+												</a> -->
 											</h4>
 										</div>
-										<div id="collapseFour" class="panel-collapse collapse"
+										<!-- <div id="collapseFour" class="panel-collapse collapse"
 											role="tabpanel" aria-labelledby="headingFour">
 											<div class="panel-body">
 												<ul>
@@ -487,7 +312,7 @@
 													<li><a href="#">Shoes</a></li>
 												</ul>
 											</div>
-										</div>
+										</div> -->
 									</div>
 									
 									
@@ -496,44 +321,44 @@
 						</div>
 						<!-- Categories end -->
 						
-						
 						<!-- Price Range start -->
 						<div class="sidebar-box-2">
 							<h2 class="heading">Price Range</h2>
-							<form method="post" class="colorlib-form-2">
-								<div class="row">
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="guests">Price from:</label>
-											<div class="form-field">
-												<i class="icon icon-arrow-down3"></i> <select name="people"
-													id="people" class="form-control">
-													<option value="#">1</option>
-													<option value="#">200</option>
-													<option value="#">300</option>
-													<option value="#">400</option>
-													<option value="#">1000</option>
-												</select>
-											</div>
+							<div class="row">
+								<!-- <div class="col-md-12">
+									<div class="form-group">
+										<label for="guests">최소 금액</label>
+										<div class="form-field">
+											<i class="icon icon-arrow-down3"></i> <select name="people1"
+												id="people1" class="form-control">
+												<option value="0">0</option>
+												<option value="200000">200,000</option>
+												<option value="400000">300,000</option>
+												<option value="600000">400,000</option>
+											</select>
 										</div>
 									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<label for="guests">Price to:</label>
+								</div> -->
+								<div class="col-md-12">
+									<div class="form-group">
+										<label for="guests">최대 금액</label>
+										<form action="shop.do">
 											<div class="form-field">
-												<i class="icon icon-arrow-down3"></i> <select name="people"
-													id="people" class="form-control">
-													<option value="#">2000</option>
-													<option value="#">4000</option>
-													<option value="#">6000</option>
-													<option value="#">8000</option>
-													<option value="#">10000</option>
+												<i class="icon icon-arrow-down3"></i> <select name="itemPrice"
+													id="itemPrice" class="form-control">
+													<option value="99999999"> - </option>
+													<option value="400000">400,000</option>
+													<option value="800000">800,000</option>
+													<option value="1200000">1,200,000</option>
 												</select>
 											</div>
-										</div>
+											<br>
+											<input id="itemType" name="itemType" type="hidden" value="${ itemType }">
+											<input type="submit" value="선택완료" class="btn btn-primary py-3 px-5">
+										</form>
 									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 						<!-- Price Range end -->
 						

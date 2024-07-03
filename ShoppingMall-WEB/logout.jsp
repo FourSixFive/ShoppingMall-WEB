@@ -4,5 +4,5 @@
 	session.invalidate();
 %>
 <script>
-	location.href = "index.jsp"
+	location.href = "StoneAIsland.do"
 </script>

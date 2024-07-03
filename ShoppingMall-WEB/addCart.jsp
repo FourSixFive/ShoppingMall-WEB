@@ -1,46 +1,46 @@
+<%@page import="kr.ac.kopo.vo.MemberVO"%>
 <%@page import="kr.ac.kopo.vo.GoodsVO"%>
 <%@page import="kr.ac.kopo.dao.GoodsDAObatis"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%
-	String Code = request.getParameter("itemCode");
-	String id = request.getParameter("userID");
-	
-	pageContext.setAttribute("id", id);
+<%@page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 
-	if(id != null){
-		GoodsDAObatis goodsbatis = new GoodsDAObatis();
-		GoodsVO goods = new GoodsVO();
-		goods = goodsbatis.singleItem(Code);
-		goods.setBrandName(id);
-		
-		int insertCheck = goodsbatis.insertBasket(goods);
-		
-		pageContext.setAttribute("insertCheck", insertCheck);
-		pageContext.setAttribute("returnCode", Code);
+<%
+	request.setCharacterEncoding("utf-8");
+	String size = request.getParameter("selectSize");
+	int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+	String code = request.getParameter("itemCode");
+	String id = request.getParameter("userid");
+	
+	switch(size){
+	case "Small":
+		size = "S";
+		break;
+	case "Medium":
+		size = "M";
+		break;
+	case "Large":
+		size = "L";
+		break;
+	case "Extra Large":
+		size = "XL";
+		break;
+	case "None":
+		size = "XX";
+		break;
 	}
+	
+	GoodsVO goods = new GoodsVO();
+	GoodsDAObatis goodsbatis = new GoodsDAObatis();
+	goods = goodsbatis.singleItem(code);
+	goods.setUserId(id);
+	goods.setItemSize(size);
+	goods.setItemQuantity(quantity);
+	
+	goodsbatis.insertBasket(goods);
+	
+	
 %>
 <script>
-
-	var idCheck = '${ pageScope.id }'
-	var insertCheck = ${ pageScope.insertCheck }
-	
-	console.log(idCheck)
-	console.log(insertCheck)
-	
-	
-	if((idCheck === null) || (insertCheck === 0)){
-		alert('로그인 정보가 만료되었습니다.')
-		location.href="index.jsp"
-	}
-	
-	if(insertCheck == 1){
-		var result = confirm('장바구니에 등록되었습니다. 바로 확인하시겠습니까?')
-		if(result){
-			location.href="cart.jsp"
-		}else{
-			location.href="product-single.jsp?itemCode=${ pageScope.returnCode }"
-		}
-	}
-	
+	location.href="cart.do"
 </script>
