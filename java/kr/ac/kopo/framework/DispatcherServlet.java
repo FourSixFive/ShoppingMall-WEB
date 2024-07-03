@@ -24,7 +24,6 @@ public class DispatcherServlet extends HttpServlet {
 
 		String uri = request.getRequestURI();
 		uri = uri.substring(request.getContextPath().length());
-
 		try {
 			Controller control = mappings.getController(uri);
 			String callPage = control.handleRequest(request, response);
@@ -37,5 +36,4 @@ public class DispatcherServlet extends HttpServlet {
 			throw new ServletException();
 		}
 	}
-
 }

@@ -12,7 +12,7 @@ public class MemberVO {
 	private String basicAddr;
 	private String detailAddr;
 	private int point;
-	private String redDate;
+	private String regDate;
 	
 	public MemberVO() {
 	}
@@ -97,11 +97,19 @@ public class MemberVO {
 		this.point = point;
 	}
 
-	public String getRedDate() {
-		return redDate;
+	public String getRegDate() {
+		return regDate;
 	}
 
-	public void setRedDate(String redDate) {
-		this.redDate = redDate;
+	public void setRedDate(String regDate) {
+		this.regDate = regDate;
 	}
+
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", phone=" + phone + ", age=" + age
+				+ ", sex=" + sex + ", postcode=" + postcode + ", basicAddr=" + basicAddr + ", detailAddr=" + detailAddr
+				+ ", point=" + point + ", redDate=" + regDate + "]";
+	}
+	
 }

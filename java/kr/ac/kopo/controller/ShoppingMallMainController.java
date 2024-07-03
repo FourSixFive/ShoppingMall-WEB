@@ -16,7 +16,9 @@ public class ShoppingMallMainController implements Controller {
 
 		GoodsDAObatis goodsbatis = new GoodsDAObatis();
 		List<GoodsVO> randomList = goodsbatis.randomShow();
+		List<GoodsVO> bestList = goodsbatis.bestShow();
 		request.setAttribute("randomList", randomList);
+		request.setAttribute("bestList", bestList);
 		
 		return "/index.jsp";
 	}
