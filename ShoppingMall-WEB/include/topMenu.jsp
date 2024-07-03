@@ -6,7 +6,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="kr.ac.kopo.dao.MemberDAObatis"%>
 <%@page import="kr.ac.kopo.vo.MemberVO"%>
-<%
+<%-- <%
 	request.setCharacterEncoding("utf-8");
 
 	if(request.getParameter("userID")!=null){
@@ -23,7 +23,7 @@
 		session.setAttribute("goodsList", goodsList);
 		session.setAttribute("basketCnt", goodsList.size());
 	}
-%>
+%> --%>
 <div class="py-1 bg-black">
 	<div class="container">
 		<div class="row no-gutters d-flex align-items-start align-items-center px-md-0">
@@ -53,30 +53,46 @@
 		</button>
 		
 		<div class="collapse navbar-collapse" id="ftco-nav">
+			
+
 			<ul class="navbar-nav ml-auto">
+			
 				<c:if test="${ not empty sessionScope.userInfo }">
 					<li class="nav-item active"><a href="/ShoppingMall-WEB/logout.do" class="nav-link">Logout</a></li>
 				</c:if>
 				<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#!" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
-				<div class="dropdown-menu" aria-labelledby="dropdown04">
-					<a class="dropdown-item" href="/ShoppingMall-WEB/shop.do">판매 상품</a>
-					<!-- <a class="dropdown-item" href="/ShoppingMall-WEB/product-single.jsp">Single Product</a> -->
-					<a class="dropdown-item" href="/ShoppingMall-WEB/cart.do">장바구니</a>
-					<a class="dropdown-item" href="/ShoppingMall-WEB/checkout.do">주문/배송 조회</a>
-				</div>
-			</li>
-				<li class="nav-item"><a href="/ShoppingMall-WEB/about.do" class="nav-link">Made By</a></li>
-				<li class="nav-item"><a href="/ShoppingMall-WEB/contact.do" class="nav-link">찾아오시는 길</a></li>
+					<a class="nav-link dropdown-toggle" href="#!" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
+					<div class="dropdown-menu" aria-labelledby="dropdown04">
+						<a class="dropdown-item" href="/ShoppingMall-WEB/shop.do?itemType=outers&itemPrice=99999999">판매 상품</a>
+						<!-- <a class="dropdown-item" href="/ShoppingMall-WEB/product-single.jsp">Single Product</a> -->
+						<a class="dropdown-item" href="/ShoppingMall-WEB/cart.do">장바구니</a>
+						<a class="dropdown-item" href="/ShoppingMall-WEB/orderCartView.do">주문목록 조회</a>
+					</div>
+				</li>
+				<!-- <li class="nav-item"><a href="/ShoppingMall-WEB/about.do" class="nav-link">Made By</a></li> -->
+				<li class="nav-item"><a href="/ShoppingMall-WEB/contact.do" class="nav-link">고객센터</a></li>
 				<!-- <li class="nav-item"><a href="/ShoppingMall-WEB/blog.jsp" class="nav-link">Blog</a></li> -->
+					<c:if test="${ not empty sessionScope.userInfo and sessionScope.userInfo.id ne 'admin' }">
+						<li class="nav-item cta cta-colored">
+						<a href="/ShoppingMall-WEB/myPage.do" class="nav-link">마이페이지</a></li>
+						<li class="nav-item cta cta-colored">
+						<a href="/ShoppingMall-WEB/cart.do" class="nav-link">${ sessionScope.userInfo.name } 님 <span class="icon-shopping_cart"></span>[${ sessionScope.basketCnt }]</a></li>
+					</c:if>
+					<c:if test="${ empty sessionScope.userInfo }">
+						<li class="nav-item"><a href="/ShoppingMall-WEB/loginForm.do" class="nav-link">Login</a></li>
+					</c:if>
 				
-				<c:if test="${ not empty sessionScope.userInfo }">
-					<li class="nav-item cta cta-colored">
-					<a href="/ShoppingMall-WEB/cart.jsp" class="nav-link"><span class="icon-shopping_cart"></span>[${ sessionScope.basketCnt }]</a></li>
+				
+				<!-- 관리자 모드 -->
+				<c:if test="${ not empty sessionScope.userInfo and sessionScope.userInfo.id eq 'admin' }">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active"><a href="#!" class="nav-link">상품 등록</a></li>
+						<li class="nav-item active"><a href="#!" class="nav-link">고객 문의 관리</a></li>
+					</ul>
 				</c:if>
-				<c:if test="${ empty sessionScope.userInfo }">
-					<li class="nav-item"><a href="/ShoppingMall-WEB/login.do" class="nav-link">Login</a></li>
-				</c:if>
+				<!-- 관리자 모드 -->
+				
+				
 			</ul>
 		</div>
 	</div>
