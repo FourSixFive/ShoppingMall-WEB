@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods.dao.goodsDAO">
+
+	<resultMap type="goodsVO" id="goodsMap">
+		<result column="id" property="userId"></result>
+		<result column="item_code" property="itemCode"></result>
+		<result column="item_name" property="itemName"></result>
+		<result column="brand_code" property="brandCode"></result>
+		<result column="brand_name" property="brandName"></result>
+		<result column="item_type" property="itemType"></result>
+		<result column="item_price" property="itemPrice"></result>
+		<result column="item_quantity" property="itemQuantity"></result>
+		<result column="item_addr" property="itemAddr"></result>
+		<result column="item_detail" property="itemDetail"></result>
+		<result column="item_style" property="itemStyle"></result>
+		<result column="item_madefor" property="itemMadefor"></result>
+		<result column="item_cleaning" property="itemCleaning"></result>
+		<result column="item_size" property="itemSize"></result>
+		<result column="billing_number" property="billingNumber"></result>
+		<result column="reg_date" property="regDate"></result>
+		<result column="view_cnt" property="viewCnt"></result>
+	</resultMap>
+
+
+	<!-- 장바구니 목록 가져오기 -->
+	<select id="basketInfo" resultMap="goodsMap" parameterType="String">
+		SELECT g.item_addr, g.ITEM_DETAIL, g.ITEM_TYPE, x.*
+		  FROM (
+				SELECT *
+				  FROM BASKETINFO b 
+				 WHERE id = #{ userId }
+		  		) x, goodsdetailinfo g 
+		 WHERE x.item_code = g.ITEM_CODE
+	</select>
+	
+	
+	<!-- 장바구니 물건 추가하기 -->
+	<insert id="insertBasket" parameterType="kr.ac.kopo.vo.GoodsVO">
+		insert into basketinfo (id, item_code, item_name, item_price, item_quantity, item_size)
+		values( #{ userId }, #{ itemCode }, #{ itemName }, #{ itemPrice }, #{ itemQuantity }, #{ itemSize })
+	</insert>
+	
+	
+	<!-- 장바구니 물건 업데이트 -->
+	<update id="updateBasket" parameterType="kr.ac.kopo.vo.GoodsVO">
+		UPDATE BASKETINFO 
+		   SET ITEM_QUANTITY = (
+								SELECT ITEM_QUANTITY 
+								  FROM BASKETINFO b 
+								 WHERE ITEM_CODE = #{ itemCode }
+		   						) + #{ itemQuantity }
+		 WHERE item_code = #{ itemCode }
+	</update>
+	
+	
+	<!-- 장바구니 물건삭제 -->
+	<delete id="deleteBasket" parameterType="String">
+		DELETE
+		  FROM basketinfo
+		 WHERE item_code = #{ itemCode }
+	</delete>
+	
+	
+	<!-- 물건데이터 추가(임시) -->
+	<insert id="insertGoods" parameterType="kr.ac.kopo.vo.GoodsVO">
+		insert into goodssize (item_code, item_size, item_quantity)
+		values( #{ itemCode }, #{ itemSize }, 100 )
+	</insert>
+	
+	
+	<!-- single product 정보 가져오기 -->
+	<select id="singleInfo" resultMap="goodsMap" parameterType="String">
+		SELECT *
+		  FROM (
+				SELECT view_cnt, item_Quantity
+				  FROM GOODSINFO g 
+				 WHERE item_code = #{ itemCode }
+		  		), goodsdetailinfo
+		 WHERE item_code = #{ itemCode }
+	</select>
+	
+	
+	<update id="viewCntUpdate" parameterType="kr.ac.kopo.vo.GoodsVO">
+		UPDATE goodsinfo 
+		   SET view_cnt = #{ viewCnt }
+		 WHERE item_code = #{ itemCode }
+	</update>
+	
+	
+	<!-- index 화면에 랜덤상품 뿌리기 -->
+	<select id="randomShow" resultMap="goodsMap">
+		SELECT *
+		  FROM (
+		  		SELECT ITEM_CODE ,ITEM_NAME ,ITEM_TYPE ,ITEM_ADDR ,ITEM_PRICE 
+		  		FROM GOODSDETAILINFO g ORDER BY dbms_random.value
+		  		)
+		 WHERE rownum <![CDATA[<=]]> 12
+	</select>
+	
+	
+	<!-- 상품페이지 페이징 -->
+	<select id="shopList" resultMap="goodsMap" parameterType="kr.ac.kopo.vo.GoodsVO">
+		SELECT *
+		  FROM (
+				SELECT *
+				  FROM (
+						SELECT rownum AS rnum ,g.*, g2.ITEM_ADDR 
+						  FROM (
+								SELECT g3.*
+								  FROM GOODSINFO g3
+								 WHERE item_type = #{ itemType }
+								 ORDER BY ITEM_CODE
+						  		)g, GOODSDETAILINFO g2
+						 WHERE g.item_code = g2.ITEM_CODE
+		 				   AND g.item_price <![CDATA[<=]]> #{ itemPrice }
+				  		)
+				 WHERE rownum <![CDATA[<=]]> #{ lastPage }
+		  		)
+		 WHERE rnum <![CDATA[>=]]> #{ prevPage }
+	</select>
+	
+	
+	<!-- index 화면에 인기상품 뿌리기 -->
+	<select	id="bestShow" resultMap="goodsMap">
+		SELECT *
+		  FROM (
+				SELECT g.ITEM_CODE ,g.ITEM_NAME ,g.ITEM_TYPE ,g2.ITEM_ADDR ,g.ITEM_PRICE 
+				  FROM GOODSINFO g, goodsdetailinfo g2
+				 WHERE g.item_code = g2.item_code
+				 ORDER BY g.VIEW_CNT DESC
+		  		)
+		 WHERE rownum <![CDATA[<=]]> 12
+	</select>
+	
+	
+	<!-- 상품 구매한 만큼 개수 빼주기 -->
+	<update id="goodsQuantity" parameterType="kr.ac.kopo.vo.GoodsVO">
+		UPDATE GOODSINFO 
+		SET ITEM_QUANTITY = ITEM_QUANTITY - #{itemQuantity}
+		WHERE ITEM_CODE = #{itemCode}
+	</update>
+
+
+	<!-- order테이블 넣기 -->
+	<insert id="insertOrder" parameterType="kr.ac.kopo.vo.GoodsVO">
+			INSERT INTO ORDERINFO (ID, ITEM_CODE, ITEM_NAME, ITEM_PRICE, ITEM_QUANTITY, BILLING_NUMBER)
+			VALUES (#{userId}, #{itemCode}, #{itemName}, #{itemPrice}, #{itemQuantity}, #{billingNumber})
+	</insert>
+	
+	
+	<!-- basket테이블 지우기 -->
+	<delete id="afterOrder" parameterType="String">
+		 DELETE
+		   FROM basketinfo
+		  WHERE ID = #{point}
+	</delete>
+	
+	
+	<!-- order테이블 목록 가져오기 -->
+	<select id="orderInfo" resultMap="goodsMap" parameterType="String">
+		SELECT *
+		  FROM ORDERINFO
+		 WHERE ID = #{ userId }
+	</select>
+	
+</mapper>
