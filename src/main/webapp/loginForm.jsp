@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+<meta name="google-signin-client_id" content="613038564599-vhp0bgg7f1hl7tf6bersmebbesldargn.apps.googleusercontent.com">
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
 	rel="stylesheet">
@@ -39,6 +39,16 @@
 		border-radius: 20px;
 	}
 </style>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script>
+	function onSignIn(googleUser) {
+		  var profile = googleUser.getBasicProfile();
+		  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+		  console.log('Name: ' + profile.getName());
+		  console.log('Image URL: ' + profile.getImageUrl());
+		  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	}
+</script>
 </head>
 <body class="goto-here">
 	
@@ -76,10 +86,15 @@
 					<input type="button" value="Sign Up" onClick="location.href='signUpForm.do'"
 						class="btn btn-primary py-3 px-5">
 				</div>
+				
+				
 				<div style="text-align: right;">
 					<span id="extraPoint">&emsp;신규회원 가입 시 2000p 지급!&emsp;</span>
 				</div>
 			</form>
+				<!-- 간편로그인 버튼 -->
+				<div class="g-signin2" data-onsuccess="onSignIn"></div>
+				<!-- 간편로그인 버튼 -->
 		</div>
 	</section>
 	

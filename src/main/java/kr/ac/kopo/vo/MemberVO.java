@@ -6,13 +6,13 @@ public class MemberVO {
 	private String password;
 	private String name;
 	private String phone;
-	private int age;
 	private char sex;
 	private int postcode;
 	private String basicAddr;
 	private String detailAddr;
 	private int point;
 	private String regDate;
+	private String email;
 	
 	public MemberVO() {
 	}
@@ -47,14 +47,6 @@ public class MemberVO {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
 	}
 
 	public char getSex() {
@@ -105,11 +97,19 @@ public class MemberVO {
 		this.regDate = regDate;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", phone=" + phone + ", age=" + age
-				+ ", sex=" + sex + ", postcode=" + postcode + ", basicAddr=" + basicAddr + ", detailAddr=" + detailAddr
-				+ ", point=" + point + ", redDate=" + regDate + "]";
+		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", phone=" + phone + ", sex=" + sex
+				+ ", postcode=" + postcode + ", basicAddr=" + basicAddr + ", detailAddr=" + detailAddr + ", point="
+				+ point + ", regDate=" + regDate + ", email=" + email + "]";
 	}
 	
 }

@@ -4,24 +4,23 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member.dao.memberDAO">
 
-	<!-- 쿼리 실행 후 결과값 담아줄 resultMap -->
 	<resultMap type="memberVO" id="memberMap">
-		<result column="basic_addr" property="basicAddr"/>
-		<result column="detail_addr" property="detailAddr"/>
+		<result column="gender" property="sex"/>
+		<result column="home_address" property="basicAddr"/>
+		<result column="detail_address" property="detailAddr"/>
 		<result column="reg_date" property="regDate"/>
 	</resultMap>
 	
 	<sql id="selectUser">
-		select id, password, name, phone, age, sex, postcode, basic_addr, detail_addr, point, TO_CHAR(REG_DATE,'YYYY-MM-DD') AS REG_DATE
+		select id, password, name, phone, gender, postcode, home_address, detail_address, point, TO_CHAR(REG_DATE,'YYYY-MM-DD') AS REG_DATE, email
 		  from userinfo
 	</sql>
-
 	<!-- 쿼리문 -->
 	
 	<!-- userinfo 레코드 삽입 -->
 	<insert id="insertUserInfo">
-		insert into userinfo(id, password, name, phone, age, sex, postcode, basic_addr, detail_addr, point)
-		values (#{ id }, #{ password }, #{ name }, #{ phone }, #{ age }, #{ sex }, #{ postcode }, #{ basicAddr }, #{ detailAddr }, #{ point })
+		insert into userinfo(id, password, name, phone, gender, postcode, home_address, detail_address, point, email)
+		values (#{ id }, #{ password }, #{ name }, #{ phone }, #{ sex }, #{ postcode }, #{ basicAddr }, #{ detailAddr }, #{ point }, #{ email })
 	</insert>
 	
 	<!-- 로그인 회원정보 가져오기 -->
@@ -41,7 +40,7 @@
 	
 	<!-- 포인트 추가하기 -->
 	<update id="addPoint" parameterType="memberVO">
-		UPDATE USERINFO 
+		UPDATE userinfo
 		   SET POINT = #{ point }
 		 WHERE ID = #{ id }
 	</update>
@@ -49,7 +48,7 @@
 
 	<!-- 포인트 제거하기(트랜잭션) -->
 	<update id="deletePoint" parameterType="memberVO">
-		UPDATE USERINFO 
+		UPDATE userinfo 
 		   SET POINT = #{ point }
 		 WHERE ID = #{ id }
 	</update>

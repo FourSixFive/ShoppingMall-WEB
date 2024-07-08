@@ -141,11 +141,11 @@
 			}
 		})
 	}
+
 </script>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800"
 	rel="stylesheet">
@@ -206,10 +206,18 @@
 				<div class="form-group">
 					<input name="signPhone" id="signPhone" type="text" pattern="[0-9]+" class="form-control" placeholder="전화번호를 입력하세요 ex) 01012123434">
 				</div>
+				<div class="form-group" style="display: flex;">
+					<input name="signEmail" type="text" class="form-control" placeholder="E-mail을 입력하세요" style="width: 300px;"><span style="font-size: 1.5em;">&emsp;@&emsp;</span>
+					<select name="signDomain">
+						<option value="naver.com">naver.com</option>
+						<option value="gmail.com">gmail.com</option>
+						<option value="daum.net">daum.net</option>
+					</select>
+				</div>
 				<div class="form-group" style="display:flex;">
 					<input name="signSecurityNum1" id="signSecurityNum1" type="text" pattern="[0-9]+" class="form-control" placeholder="생일을 입력하세요 ex) 19980101" style="width: 300px;">
 					<span style="font-size: 1.5em;">&nbsp;-&nbsp;</span>
-					<input name="signSecurityNum2" id="signSecurityNum2" type="password" pattern="[0-9]+" class="form-control"  style="width: 30px;">
+					<input name="signSecurityNum2" id="signSecurityNum2" type="password" pattern="[0-9]+" class="form-control" style="width: 30px;">
 					<span style="font-size: 1.5em;">&nbsp;● ● ● ● ● ●</span>
 				</div>
 				<div class="form-group" style="display:flex;">
@@ -221,7 +229,7 @@
 					<input type="text" name="detailAddr" id="sample6_detailAddress" class="form-control" placeholder="상세주소">
 				</div>
 				<br>
-				<div class="form-group">
+				<div class="form-group" style="display:flex;">
 					<input type="submit" value="Sign Up"
 						class="btn btn-primary py-3 px-5">
 				</div>

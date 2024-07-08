@@ -9,12 +9,11 @@
 	String password = request.getParameter("signPWD");
 	String name = request.getParameter("signName");
 	String phone = request.getParameter("signPhone");
-	int age = 2024-Integer.parseInt(request.getParameter("signSecurityNum1").substring(0, 4));
+	String email = request.getParameter("signEmail")+"@"+request.getParameter("signDomain");
 	char sex = ' ';
 	int postcode = Integer.parseInt(request.getParameter("postcode"));
 	String basicAddr = request.getParameter("basicAddr");
 	String detailAddr = request.getParameter("detailAddr");
-	
 	String sexChk = request.getParameter("signSecurityNum2");
 	if(sexChk.equals("1") || sexChk.equals("3")){
 		sex = 'M';
@@ -28,13 +27,12 @@
 	member.setPassword(password);
 	member.setName(name);
 	member.setPhone(phone);
-	member.setAge(age);
 	member.setSex(sex);
 	member.setPostcode(postcode);
 	member.setBasicAddr(basicAddr);
 	member.setDetailAddr(detailAddr);
 	member.setPoint(2000);
-	
+	member.setEmail(email);
 	System.out.println(member.toString());
 	
 	MemberDAObatis DAObatis = new MemberDAObatis();
