@@ -45,7 +45,7 @@ public class GoodsDAObatis {
 		List<GoodsVO> list = this.basketinfo(goods.getUserId());
 		
 		for(GoodsVO goodschk : list) {
-			if(goodschk.getItemCode().equals(goods.getItemCode())) {
+			if((goodschk.getItemCode().equals(goods.getItemCode())) || (goodschk.getItemSize().equals(goods.getItemSize()))) {
 				this.updateBasket(goods);
 				return chk;
 			}

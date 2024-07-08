@@ -47,12 +47,9 @@
 	<!-- 장바구니 물건 업데이트 -->
 	<update id="updateBasket" parameterType="kr.ac.kopo.vo.GoodsVO">
 		UPDATE BASKETINFO 
-		   SET ITEM_QUANTITY = (
-								SELECT ITEM_QUANTITY 
-								  FROM BASKETINFO b 
-								 WHERE ITEM_CODE = #{ itemCode }
-		   						) + #{ itemQuantity }
+		   SET ITEM_QUANTITY = ITEM_QUANTITY + #{ itemQuantity }
 		 WHERE item_code = #{ itemCode }
+		   AND item_size = #{ itemSize }
 	</update>
 	
 	

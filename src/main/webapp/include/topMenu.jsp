@@ -40,7 +40,7 @@
 			<ul class="navbar-nav ml-auto">
 			
 				<c:if test="${ not empty sessionScope.userInfo }">
-					<li class="nav-item active"><a href="/ShoppingMall-WEB/logout.do" class="nav-link">Logout</a></li>
+					<li class="nav-item"><a href="/ShoppingMall-WEB/logout.do" class="nav-link">Logout</a></li>
 				</c:if>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#!" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catalog</a>
@@ -55,7 +55,7 @@
 				<li class="nav-item"><a href="/ShoppingMall-WEB/contact.do" class="nav-link">고객센터</a></li>
 				<!-- <li class="nav-item"><a href="/ShoppingMall-WEB/blog.jsp" class="nav-link">Blog</a></li> -->
 					<c:if test="${ not empty sessionScope.userInfo and sessionScope.userInfo.id ne 'admin' }">
-						<li class="nav-item cta cta-colored">
+						<li class="nav-item">
 						<a href="/ShoppingMall-WEB/myPage.do" class="nav-link">마이페이지</a></li>
 						<li class="nav-item cta cta-colored">
 						<a href="/ShoppingMall-WEB/cart.do" class="nav-link">${ sessionScope.userInfo.name } 님 <span class="icon-shopping_cart"></span>[${ sessionScope.basketCnt }]</a></li>
