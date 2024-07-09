@@ -27,9 +27,22 @@
 	
 	<!-- 문의 글 삽입 -->
 	<insert id="insertRequest" parameterType="kr.ac.kopo.vo.BoardVO">
-		INSERT INTO CONTACT_US (id, name, title, content)
-		VALUES (#{ id }, #{ name }, #{ title }, #{ content })
+		INSERT INTO CONTACT_US (id, name, title, content, no)
+		VALUES (#{ id }, #{ name }, #{ title }, #{ content }, seq_contact_us_no.nextval)
 	</insert>
+	
+	
+	<select id="boardList" resultMap="boardMap">
+		SELECT NO, id, name, title, content, TO_CHAR(reg_date, 'YYYY-MM-DD') AS reg_date 
+  		  FROM CONTACT_US
+	</select>
+	
+	
+	<select id="contactSingle" resultMap="boardMap" parameterType="Integer">
+		SELECT NO, id, name, title, content, TO_CHAR(reg_date, 'YYYY-MM-DD') AS reg_date 
+		  FROM CONTACT_US
+		 WHERE NO = #{ no }
+	</select>
 	
 	
 	<!-- review 삭제 -->

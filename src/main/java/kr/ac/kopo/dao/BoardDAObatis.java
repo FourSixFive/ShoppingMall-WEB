@@ -67,4 +67,31 @@ public class BoardDAObatis {
 		}
 	}
 	
+	
+	public List<BoardVO> contactList() {
+		
+		List<BoardVO> boardList = new ArrayList<>();
+		try {
+			boardList = session.selectList("board.dao.boardDAO.boardList");
+			return boardList;
+		} catch (Exception e) {
+			System.out.println("contactList() 실패");
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public BoardVO contactSingle(int no) {
+		
+		BoardVO board = new BoardVO();
+		try {
+			board = session.selectOne("board.dao.boardDAO.contactSingle",no);
+			return board;
+		} catch (Exception e) {
+			System.out.println("contactSingle() 실패");
+			e.printStackTrace();
+			board.setContent("삭제된 문의내역입니다.");
+			return board;
+		}
+	}
 }

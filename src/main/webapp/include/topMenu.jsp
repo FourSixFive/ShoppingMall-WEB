@@ -68,8 +68,8 @@
 				<!-- 관리자 모드 -->
 				<c:if test="${ not empty sessionScope.userInfo and sessionScope.userInfo.id eq 'admin' }">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a href="#!" class="nav-link">상품 등록</a></li>
-						<li class="nav-item active"><a href="#!" class="nav-link">고객 문의 관리</a></li>
+						<li class="nav-item"><a href="#!" class="nav-link">상품 등록</a></li>
+						<li class="nav-item"><a href="AdmincontactCheck.do" class="nav-link">고객 문의 관리</a></li>
 					</ul>
 				</c:if>
 				<!-- 관리자 모드 -->

@@ -5,8 +5,8 @@
 <html lang="en">
 <head>
 <title>Stone AIsland - Contact</title>
-<!-- <script defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&callback=initMap"></script> -->
+<script defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&callback=initMap"></script>
 <script>
 	window.initMap = function() {
 		const map = new google.maps.Map(document.getElementById("GoogleMap"), {
@@ -221,7 +221,7 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/scrollax.min.js"></script>
 	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfhEfOZHRYP-haM_HRzQ5nniVe_PdIOYs&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 

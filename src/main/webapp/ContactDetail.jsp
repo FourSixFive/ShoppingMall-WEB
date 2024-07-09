@@ -44,9 +44,14 @@
 		border-collapse: collapse;
 	}
 	
-	#styledTable th, #styledTable td {
+	#styledTable th {
 		padding: 10px;
 		text-align: center;
+		border: 1px solid #dddddd;
+	}
+	
+	#styledTable td {
+		padding: 10px;
 		border: 1px solid #dddddd;
 	}
 	
@@ -59,6 +64,9 @@
 		background-color: #f2f2f2;
 	}
 </style>
+<script>
+	
+</script>
 </head>
 <body class="goto-here">
 	
@@ -85,19 +93,19 @@
 		<table id="styledTable">
 			<thead>
 				<tr>
-					<th style="width: 55%;">제목</th>
-					<th style="width: 15%;">회원이름</th>
-					<th style="width: 25%;">작성일자</th>
+					<th style="width: 15%;">문의번호 : ${ requestScope.board.no }</th>
+					<th style="width: 55%;">${ requestScope.board.title }</th>
+					<th style="width: 10%;">${ requestScope.board.id }</th>
+					<th style="width: 10%;">${ requestScope.board.regDate }</th>
+					<th style="width: 5%;"> - </th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${ requestScope.boardList }" var="board">
-					<tr>
-						<td><a href="contactDetail.do?no=${ board.no }">${ board.title }</a></td>
-						<td>${ board.name }</td>
-						<td>${ board.regDate }</td>
-					</tr>
-				</c:forEach>
+				<tr>
+					<td colspan="4"><pre>${ requestScope.board.content }</pre></td>
+					<td><button type="button" value="삭제"
+								class="btn btn-primary py-3 px-8"></button></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

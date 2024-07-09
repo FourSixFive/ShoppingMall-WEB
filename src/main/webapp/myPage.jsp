@@ -269,7 +269,7 @@
 				class="row no-gutters slider-text align-items-center justify-content-center">
 				<div class="col-md-9 ftco-animate text-center">
 					<p class="breadcrumbs">
-						<span class="mr-2"><span>MyPage</span>
+						<span class="mr-2">MyPage</span>
 					</p>
 					<h1 class="mb-0 bread">My Page</h1>
 				</div>
@@ -323,6 +323,12 @@
 							<input name="Phone" id="Phone" type="text" pattern="[0-9]+"
 								class="form-control"
 								placeholder="${ requestScope.myPageUser.phone }"
+								style="width: 200px; border-width: 0 0 1px;">
+						</div>
+						<div class="form-group">
+							<input name="email" id="email" type="text"
+								class="form-control"
+								placeholder="${ requestScope.myPageUser.email }"
 								style="width: 200px; border-width: 0 0 1px;">
 						</div>
 						<div class="form-group" style="display: flex;">

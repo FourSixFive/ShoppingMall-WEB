@@ -48,7 +48,7 @@
 
 	<!-- 포인트 제거하기(트랜잭션) -->
 	<update id="deletePoint" parameterType="memberVO">
-		UPDATE userinfo 
+		UPDATE userinfo
 		   SET POINT = #{ point }
 		 WHERE ID = #{ id }
 	</update>
