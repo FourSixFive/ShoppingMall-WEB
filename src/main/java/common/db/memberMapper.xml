@@ -23,6 +23,13 @@
 		values (#{ id }, #{ password }, #{ name }, #{ phone }, #{ sex }, #{ postcode }, #{ basicAddr }, #{ detailAddr }, #{ point }, #{ email })
 	</insert>
 	
+	
+	<update id="updateUserInfo" parameterType="memberVO">
+		UPDATE userinfo
+		   SET (name, phone, postcode, home_address, detail_address, point, email) = (#{ name },#{ phone },#{ postcode },#{ basicAddr },#{ detailAddr },#{ point },#{ email })
+		 WHERE ID = #{ id }
+	</update>
+	
 	<!-- 로그인 회원정보 가져오기 -->
 	<select id="loginUserInfo" resultMap="memberMap" parameterType="String">
 		<include refid="selectUser"></include>

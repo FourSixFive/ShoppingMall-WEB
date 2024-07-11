@@ -311,16 +311,28 @@
 									<!-- 리뷰 1칸 영역 -->
 									
 									
-									
-									<div class="review-container">
-										<form id="reviewForm" action="addReview.jsp" method="post">
-											<label for="text-review">리뷰 작성</label>
-												<textarea id="review" name="review" class="text-review" rows="4" placeholder="여기에 리뷰를 작성하세요."></textarea>
-											<input type="submit" value="리뷰 쓰기" class="btn btn-primary py-3 px-5" style="width: 100%;">
-											<input type="hidden" name="id" value="${ sessionScope.userInfo.id }">
-											<input type="hidden" name="itemCode" value="${ requestScope.singlegoods.itemCode }">
-										</form>
-									</div>
+									<c:choose>
+										<c:when test="${ not empty sessionScope.userInfo }">
+											<div class="review-container">
+												<form id="reviewForm" action="addReview.jsp" method="post">
+													<label for="text-review">리뷰 작성</label>
+														<textarea id="review" name="review" class="text-review" rows="4" placeholder="여기에 리뷰를 작성하세요."></textarea>
+													<input type="submit" value="리뷰 쓰기" class="btn btn-primary py-3 px-5" style="width: 100%;">
+													<input type="hidden" name="id" value="${ sessionScope.userInfo.id }">
+													<input type="hidden" name="itemCode" value="${ requestScope.singlegoods.itemCode }">
+												</form>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="review-container">
+												<form id="reviewForm" action="addReview.jsp" method="post">
+													<label for="text-review">리뷰 작성</label>
+														<textarea id="review" name="review" class="text-review" rows="4" placeholder="로그인 후 이용해주세요" readonly></textarea>
+													<input type="button" value="리뷰 쓰기" class="btn btn-primary py-3 px-5" style="width: 100%;">
+												</form>
+											</div>
+										</c:otherwise>
+									</c:choose>
 									
 									
 								</div>

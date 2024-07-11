@@ -81,6 +81,7 @@ public class BoardDAObatis {
 		}
 	}
 	
+	
 	public BoardVO contactSingle(int no) {
 		
 		BoardVO board = new BoardVO();
@@ -92,6 +93,16 @@ public class BoardDAObatis {
 			e.printStackTrace();
 			board.setContent("삭제된 문의내역입니다.");
 			return board;
+		}
+	}
+	
+	public void deleteContact(int no) {
+		try {
+			session.delete("board.dao.boardDAO",no);
+			session.commit();
+		} catch (Exception e) {
+			System.out.println("deleteContact() 실패");
+			e.printStackTrace();
 		}
 	}
 }

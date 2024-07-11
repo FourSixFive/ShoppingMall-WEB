@@ -64,9 +64,6 @@
 		background-color: #f2f2f2;
 	}
 </style>
-<script>
-	
-</script>
 </head>
 <body class="goto-here">
 	
@@ -93,7 +90,7 @@
 		<table id="styledTable">
 			<thead>
 				<tr>
-					<th style="width: 15%;">문의번호 : ${ requestScope.board.no }</th>
+					<th id="boardNo" style="width: 15%;">문의번호 : ${ requestScope.board.no }</th>
 					<th style="width: 55%;">${ requestScope.board.title }</th>
 					<th style="width: 10%;">${ requestScope.board.id }</th>
 					<th style="width: 10%;">${ requestScope.board.regDate }</th>
@@ -103,8 +100,11 @@
 			<tbody>
 				<tr>
 					<td colspan="4"><pre>${ requestScope.board.content }</pre></td>
-					<td><button type="button" value="삭제"
-								class="btn btn-primary py-3 px-8"></button></td>
+					<td>
+						<a href="/deleteContact.do?no=${ requestScope.board.no }">
+							<input type="button" value="삭제" class="btn btn-primary py-3 px-8">
+						</a>
+					</td>
 				</tr>
 			</tbody>
 		</table>

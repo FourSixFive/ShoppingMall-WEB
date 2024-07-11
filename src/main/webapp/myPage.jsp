@@ -180,7 +180,7 @@
 
 	let checkForm = function(){
 		
-		let f = document.signUpForm
+		let f = document.userForm
 
 		if(isNull(f.Name, '이름을 입력하세요'))return false
 		
@@ -307,50 +307,50 @@
 				<div class="col-lg-8 ftco-animate">
 					<h2>회원정보</h2>
 
-					<form name="userForm" onsubmit="return checkForm()" action="#!"
+					<form name="userForm" onsubmit="return checkForm()" action="editUserInfo.do"
 						class="bg-white p-5 contact-form" method="post">
 						<div class="form-group" style="display: flex;">
-							<input name="Id" id="Id" type="text" class="form-control"
-								placeholder="${ requestScope.myPageUser.id }"
-								style="width: 200px; border-width: 0;" readonly>
+							<input name="editId" id="editId" type="text" class="form-control"
+							placeholder="${ requestScope.myPageUser.id }"
+							style="width: 200px; border-width: 0;" readonly>
 						</div>
 						<div class="form-group">
-							<input name="Name" type="text" class="form-control"
-								placeholder="${ requestScope.myPageUser.name }"
-								style="width: 200px; border-width: 0 0 1px;">
+							<input name="editName" id="editName" type="text" class="form-control"
+							placeholder="${ requestScope.myPageUser.name }"
+							style="width: 200px; border-width: 0 0 1px;">
 						</div>
 						<div class="form-group">
-							<input name="Phone" id="Phone" type="text" pattern="[0-9]+"
-								class="form-control"
-								placeholder="${ requestScope.myPageUser.phone }"
-								style="width: 200px; border-width: 0 0 1px;">
+							<input name="editPhone" id="editPhone" type="text" pattern="[0-9]+"
+							class="form-control"
+							placeholder="${ requestScope.myPageUser.phone }"
+							style="width: 200px; border-width: 0 0 1px;">
 						</div>
 						<div class="form-group">
-							<input name="email" id="email" type="text"
-								class="form-control"
-								placeholder="${ requestScope.myPageUser.email }"
-								style="width: 200px; border-width: 0 0 1px;">
+							<input name="editEmail" id="editEmail" type="text"
+							class="form-control"
+							placeholder="${ requestScope.myPageUser.email }"
+							style="width: 200px; border-width: 0 0 1px;">
 						</div>
 						<div class="form-group" style="display: flex;">
-							<input type="text" name="postcode" id="sample6_postcode"
-								class="form-control"
-								placeholder="${ requestScope.myPageUser.postcode }"
-								style="width: 200px; border-width: 0 0 1px;">&emsp; <input
-								type="button" onclick="sample6_execDaumPostcode()"
-								value="우편번호 찾기">
+							<input type="text" name="editPostCode" id="sample6_postcode"
+							class="form-control"
+							placeholder="${ requestScope.myPageUser.postcode }"
+							style="width: 200px; border-width: 0 0 1px;">&emsp; <input
+							type="button" onclick="sample6_execDaumPostcode()"
+							value="우편번호 찾기">
 						</div>
 						<div>
-							<input type="text" name="basicAddr" id="sample6_address"
-								class="form-control"
-								placeholder="${ requestScope.myPageUser.basicAddr }"
-								style="width: 350px; border-width: 0 0 1px;"> <input
-								type="text" name="detailAddr" id="sample6_detailAddress"
-								class="form-control"
-								placeholder="${ requestScope.myPageUser.detailAddr }"
-								style="width: 350px; border-width: 0 0 1px;">
+							<input type="text" name="editBasicAddr" id="sample6_address"
+							class="form-control"
+							placeholder="${ requestScope.myPageUser.basicAddr }"
+							style="width: 350px; border-width: 0 0 1px;">
+							<input type="text" name="editDetailAddr" id="sample6_detailAddress"
+							class="form-control"
+							placeholder="${ requestScope.myPageUser.detailAddr }"
+							style="width: 350px; border-width: 0 0 1px;">
 						</div>
 						<div class="form-group" style="display: flex;">
-							<input type="text" class="form-control"
+							<input type="text" class="form-control" name="point" id="point"
 								placeholder="보유 포인트 : <fmt:formatNumber value="${ requestScope.myPageUser.point }" type="number" groupingUsed="true" />p"
 								style="border-width: 0;" readonly>
 						</div>

@@ -53,5 +53,11 @@
 	</delete>
 	
 	
+	<delete id="deleteContact" parameterType="int">
+		DELETE
+		  FROM contact_us
+		 WHERE no = #{ no }
+	</delete>
+	
 	
 </mapper>

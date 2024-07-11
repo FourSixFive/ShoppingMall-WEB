@@ -44,6 +44,15 @@ public class MemberDAObatis {
 		}
 	}
 	
+	public void updateUserInfo(MemberVO member) {
+		try {
+			session.update("member.dao.memberDAO.updateUserInfo",member);
+		} catch (Exception e) {
+			System.out.println("updateUserInfo() 실패");
+			e.printStackTrace();
+		}
+	}
+	
 	
 	/**
 	 * 
@@ -79,6 +88,7 @@ public class MemberDAObatis {
 			e.printStackTrace();
 		}
 	}
+	
 	
 	
 	////////////////////////////////////////////////////////////////////
